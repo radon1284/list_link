@@ -12,14 +12,13 @@
 *
 *= require_tree .
 *= stub active_admin
-
+*= require font-awesome
 *= require_self
 */
 @import "bootstrap_configuration";
-
 @import "bootstrap-sprockets";
-
 @import "bootstrap";
+@import "font-awesome";
 
 //->Prelang (ui_framework:twitter_bootstrap)
 

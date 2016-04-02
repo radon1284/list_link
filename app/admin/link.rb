@@ -1,5 +1,12 @@
 ActiveAdmin.register Link do
-  permit_params :link_name, :description, :url
+  # permit_params :link_name, :description, :url
+
+  index do
+  	column :link_name do |link|
+  		link_to link.link_name, link.url, target: "blank"
+  	end
+  	column :category
+  end
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

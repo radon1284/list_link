@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ListLink</title>
+  <title>List Link</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,10 +9,9 @@
     <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
 <body>
 <%= render partial: "elements/navbar" %>
+<div class="container">
 <%= bootstrap_flash %>
-
-
-<%= yield %>
-
+	<%= yield %>
+</div>
 </body>
 </html>
