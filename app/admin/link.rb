@@ -1,4 +1,5 @@
 ActiveAdmin.register Link do
+  permit_params :link_name, :description, :url
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
