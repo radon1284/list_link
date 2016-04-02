@@ -16,7 +16,7 @@
     <% @links.each do |link| %>
       <tr>
         <td><%= link_to link.link_name, link.url, target: "blank"   %></td>
-       <td><%= link.category.category_name %></td>
+       <td><%= link_to link.category.category_name, links_path(category: link.category.category_name) %></td>
         
         <td>
           <%= link_to link_path(link), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

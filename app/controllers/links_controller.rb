@@ -8,9 +8,21 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    if params[:category].blank?
+      @links = Link.all.order("created_at DESC")
+    else
+      @category_id = Category.find_by(category_name: params[:category]).id
+      @links = Link.where(category_id: @category_id).order("created_at DESC")
+    end
   end
 
+
+# if params[:category].blank?
+#       @jobs = Job.all.order("created_at DESC")
+#     else
+#       @category_id = Category.find_by(name: params[:category]).id
+#       @jobs = Job.where(category_id: @category_id).order("created_at DESC")
+#     end
   # GET /links/1
   # GET /links/1.json
   def show
