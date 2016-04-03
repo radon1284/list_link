@@ -57,6 +57,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
+    if @link.user == current_user
     respond_to do |format|
       if @link.update(link_params)
         format.html { redirect_to @link, notice: 'Link was successfully updated.' }
@@ -66,15 +67,29 @@ class LinksController < ApplicationController
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
+    else
+      respond_to do |format|
+        format.html { redirect_to @link, notice: 'Link cannot be updated. You must be the creator of this link to updated it!' }
+        format.json { render :edit}
+      end
+    end
+
   end
 
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
-    @link.destroy
-    respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
-      format.json { head :no_content }
+    if @link.user == current_user
+      @link.destroy
+      respond_to do |format|
+        format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @link, notice: 'Link cannot be deleted. You must be the creator of this link to delete it!' }
+        format.json { render :show, status: :ok, location: @link }
+      end
     end
   end
 
