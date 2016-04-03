@@ -34,11 +34,13 @@
         </td>
         <td>
           <%= link_to like_link_path(link), method: :put do %>
-          <%= link.score %>
+          
           <i class="fa fa-thumbs-up"></i>
+          <%= link.get_upvotes.size %>
           <% end %> | 
           <%= link_to dislike_link_path(link), method: :put do %>
           <i class="fa fa-thumbs-down"></i>
+          <%= link.get_downvotes.size %>
 
           <% end %>
           </td>
