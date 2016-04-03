@@ -2,6 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => Link %></h1>
 </div>
+<%= link_to like_link_path(@link), method: :put do %>
+<%= @link.score %> 
+  <i class="fa fa-thumbs-up"></i>
+<% end %> | 
+<%= link_to dislike_link_path(@link), method: :put do %>
+  <i class="fa fa-thumbs-down"></i>
+<% end %>
 
 <div class="fieldset">
   <dl>

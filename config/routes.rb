@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   resources :links do
   #->Prelang (voting/acts_as_votable)
+  # member do
+  #   get "vote"
+  # end
   member do
-    get "vote"
+    put "like", to: "links#upvote"
+    put "dislike", to: "links#downvote"
   end
 end
 

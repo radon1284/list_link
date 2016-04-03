@@ -95,22 +95,34 @@ class LinksController < ApplicationController
 
 
   #->Prelang (voting/acts_as_votable)
-  def vote
+  # def vote
 
-    direction = params[:direction]
+  #   direction = params[:direction]
 
-    # Make sure we've specified a direction
-    raise "No direction parameter specified to #vote action." unless direction
+  #   # Make sure we've specified a direction
+  #   raise "No direction parameter specified to #vote action." unless direction
 
-    # Make sure the direction is valid
-    unless ["like", "bad"].member? direction
-      raise "Direction '#{direction}' is not a valid direction for vote method."
-    end
+  #   # Make sure the direction is valid
+  #   unless ["like", "bad"].member? direction
+  #     raise "Direction '#{direction}' is not a valid direction for vote method."
+  #   end
 
-    @link.vote_by voter: current_user, vote: direction
+  #   @link.vote_by voter: current_user, vote: direction
 
-    redirect_to action: :index
+  #   redirect_to action: :index
+  # end
+
+  def upvote
+    @link = Link.find(params[:id])
+    @link.upvote_by current_user
+    redirect_to links_path
   end
+
+  def downvote
+    @link = Link.find(params[:id])
+    @link.downvote_by current_user
+    redirect_to links_path
+end
 
 
   private

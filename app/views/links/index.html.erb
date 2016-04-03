@@ -8,8 +8,9 @@
       
       <th><%= model_class.human_attribute_name(:link_name) %></th>
       <th>Category</th>
-      <th>User</th>
+      
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Votes</th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +19,7 @@
         <td><%= link_to link.link_name, link.url, target: "blank"   %></td>
        <td><%= link_to link.category.category_name, links_path(category: link.category.category_name) %></td>
 
-       <td><%= link.user %></td>
+       
         
         <td>
           <%= link_to link_path(link), :class => 'btn btn-xs' do %>
@@ -29,7 +30,18 @@
             <i class="fa fa-trash"></i>
           <%- end -%>
           <% end %>
+
         </td>
+        <td>
+          <%= link_to like_link_path(link), method: :put do %>
+          <%= link.score %>
+          <i class="fa fa-thumbs-up"></i>
+          <% end %> | 
+          <%= link_to dislike_link_path(link), method: :put do %>
+          <i class="fa fa-thumbs-down"></i>
+
+          <% end %>
+          </td>
       </tr>
     <% end %>
   </tbody>
