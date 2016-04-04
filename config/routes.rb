@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
+  get 'homes/index'
+
   resources :categories
 
   resources :links do
-  #->Prelang (voting/acts_as_votable)
-  # member do
-  #   get "vote"
-  # end
-  member do
-    put "like", to: "links#upvote"
-    put "dislike", to: "links#downvote"
+    #->Prelang (voting/acts_as_votable)
+    # member do
+    #   get "vote"
+    # end
+    member do
+      put "like", to: "links#upvote"
+      put "dislike", to: "links#downvote"
+    end
   end
-end
+
+  # get '*path' => redirect('/')
 
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords", omniauth_callbacks: "users/omniauth_callbacks"}, skip: [:sessions, :registrations]
@@ -21,6 +25,7 @@ end
 
   # You can have the root of your site routed with "root"
   root 'links#index'
+  # root 'homes#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
