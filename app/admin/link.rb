@@ -6,6 +6,8 @@ ActiveAdmin.register Link do
   		link_to link.link_name, link.url, target: "blank"
   	end
   	column :category
+
+  	actions
   end
 
   # filter :category
