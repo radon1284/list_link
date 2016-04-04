@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'homes/index'
+  root 'homes#links'
 
   resources :categories
 
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'links#index'
+  # root 'links#index'
   # root 'homes#index'
 
   # Example of regular route:

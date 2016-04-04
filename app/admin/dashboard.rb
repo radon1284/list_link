@@ -13,7 +13,11 @@ ActiveAdmin.register_page "Dashboard" do
     section "Recent Links" do
     table_for Link.order("created_at desc").limit(5) do
       column :link_name do |link|
-        link_to link.link_name, [:admin, link]
+        if link.link_name.empty?
+        link_to link.url, link.url, target: "blank"
+        else
+          link_to link.link_name, link.url, target: "blank"
+        end
       end
       column :created_at
     end

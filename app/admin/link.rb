@@ -3,7 +3,11 @@ ActiveAdmin.register Link do
 
   index do
   	column :link_name do |link|
-  		link_to link.link_name, link.url, target: "blank"
+  		if link.link_name.empty?
+  			link_to link.url, link.url, target: "blank"
+	  	else
+	  		link_to link.link_name, link.url, target: "blank"
+	  	end
   	end
   	column :category
 

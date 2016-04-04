@@ -20,16 +20,6 @@
           <%= link_to link_path(link), :class => 'btn btn-xs' do %>
             <i class="fa fa-pencil-square-o"></i>
           <%- end -%>
-          <% if link.user == current_user %>
-          <%= link_to link_path(link), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs' do %>
-            <i class="fa fa-trash"></i>
-          <%- end -%>
-          <% elsif current_admin_user == true %> 
-          <%= link_to link_path(link), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs' do %>
-            <i class="fa fa-trash"></i>
-          <%- end -%>
-          <% end %>
-
         </td>
         <td>
           <%= link_to like_link_path(link), method: :put do %>
