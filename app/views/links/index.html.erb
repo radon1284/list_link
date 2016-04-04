@@ -7,7 +7,6 @@
     <tr>
       
       <th><%= model_class.human_attribute_name(:link_name) %></th>
-      <th>Category</th>
       
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
       <th>Votes</th>
@@ -16,11 +15,7 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= link_to link.link_name, link.url, target: "blank"   %></td>
-       <td><%= link_to link.category.category_name %></td>
-
-       
-        
+        <td><% if link.link_name.empty? %><%= link_to link.url, link.url, target: "blank"   %><% else %><%= link_to link.link_name, link.url, target: "blank"   %><% end %></td>
         <td>
           <%= link_to link_path(link), :class => 'btn btn-xs' do %>
             <i class="fa fa-pencil-square-o"></i>
