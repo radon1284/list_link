@@ -14,21 +14,17 @@
   </thead>
   <tbody>
     <% @links.each do |link| %>
+    <% if link.user == current_user %>
       <tr>
         <td><% if link.link_name.empty? %><%= link_to link.url, link.url, target: "blank"   %><% else %><%= link_to link.link_name, link.url, target: "blank"   %><% end %></td>
         <td>
           <%= link_to link_path(link), :class => 'btn btn-xs' do %>
             <i class="fa fa-pencil-square-o"></i>
           <%- end -%>
-          <% if link.user == current_user %>
+          
           <%= link_to link_path(link), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs' do %>
             <i class="fa fa-trash"></i>
           <%- end -%>
-          <% elsif current_admin_user == true %> 
-          <%= link_to link_path(link), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs' do %>
-            <i class="fa fa-trash"></i>
-          <%- end -%>
-          <% end %>
 
         </td>
         <td>
@@ -44,6 +40,7 @@
           <% end %>
           </td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
