@@ -2,6 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => Link %></h1>
 </div>
+<div class="table-responsive">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -44,6 +45,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
  <% if user_signed_in? %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_link_path,
